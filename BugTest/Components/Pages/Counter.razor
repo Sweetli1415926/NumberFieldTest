@@ -7,6 +7,7 @@
 <div role="status" style="padding-bottom: 1em;">
     Current count: <FluentBadge Appearance="Appearance.Neutral">@SharedService.currentCount</FluentBadge>
     <FluentNumberField HideStep="true" @bind-Value=@SharedService.currentCount  ReadOnly />
+    <FluentNumberField HideStep="true" @bind-Value=@SharedService.currentCount  />
 </div>
 
 <Test UpdateUI="UpdateUI"></Test>

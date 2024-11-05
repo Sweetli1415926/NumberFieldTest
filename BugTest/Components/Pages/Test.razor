@@ -1,0 +1,21 @@
+﻿<h3>Test</h3>
+@inject SharedService SharedService
+
+<FluentNumberField HideStep="true" TValue="int" Value=@a ValueChanged="@((newValue)=>CellEndEdit("a",newValue))" />
+
+<FluentNumberField TValue="int" HideStep="true" Value=@b ValueChanged="@((newValue)=>CellEndEdit("b",newValue))" />
+@code {
+    [Parameter]
+    public EventCallback UpdateUI { get; set; }
+    int a = 0;
+    int b = 0;
+    private async Task CellEndEdit(string name, object? newValue)
+    {
+        if (name == "a")
+            a = (int)newValue;
+        else
+            b = (int)newValue;
+        SharedService.currentCount = a * b;
+        await UpdateUI.InvokeAsync();
+    }
+}
